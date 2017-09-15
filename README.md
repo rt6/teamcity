@@ -1,12 +1,38 @@
-# TEAMCITY
+# CI/CD with TEAMCITY (TC)
 
-## 1) Setup server
+
+## Github Branches
+Branch Name | Purpose
+---|---
+Master | Production ready, stable code
+Staging | Accumulation of new software features from Develop branch to do integration testing before deploying on production system (Master branch)
+Develop | Developers merge new software features to this branch to do testing via Pull Requests
+Feature | Feature branches used by developers for each new software feature
+
+## CI/CD Process:
+This varies dependent on software development team needs and preferences.
+
+**Feature 1 -> Develop -> Staging -> Master**
+
+
+1) Developers checkout from `Master` and create `Feature` branch.  Developers can fork the original repo, or push to the same repo. 
+2) Create Pull Request from `Feature` branch into `Develop` branch
+3) New Pull Requests to `Develop` branch triggers TC to do software testing.  You can download use Teamcity.Github plugin to submit test results back to Github PR webpage.  If PR passes testing, merge PR into `Develop` branch using Github or manual merge if there are conflicts.
+4) Commits in `Develop` branch triggers TC to do software testing, and upon passing TC will automatically commit to `Staging` branch.
+5) Commits to `Staging` branch trigger TC to do integration testing.  You can squash commits using `git reset` or `git rebase` in `Staging` branch to clean up Git log history.
+6) Create Pull Request from `Staging` into` Master`.  Project Owner/ Team Lead review/approve Pull Request into `Master` branch.
+7) CD setup should be using code from `Master` branch using `git pull` or download zip artefact.
+8) You can have a `Hotfix` branch that is checked out from `Master` and merged back to `Master`.
+
+
+
+## 1) Teamcity Setup server
 
 You can use docker image, and it can be behind nginx if you are hosting many web apps on the same VM host.
 
 Teamcity requires default port `8111` to be open inbound unless you change it to port 80.
 
-## 2) Setup Build Agent
+## 2) Setup Teamcity Build Agent
 
 
 Build agent requires port `9090` to be open.
