@@ -77,3 +77,11 @@ tail -f logs/teamcity-agent.log
 
 Now go to Teamcity web portal, and click agents.  Under the `unauthorized` tab, you will see the new build agent. Click `authorize` to start using the new build agent.
 
+## 3) Build / Testing Icon
+Add this sniplet of code to the Github repo README.md file to display a image representing the the pass (green) or fail (red) of building and/or testing.  You may wish to remove the anchor if you do not want a hyper link back to the build status webpage.
+
+```html
+<a href="http://YOURTEAMCITYURL/viewType.html?buildTypeId=YOURBUILDID&guest=1">
+<img src="http://YOURTEAMCITYURL/app/rest/builds/buildType:(id:YOURBUILDID)/statusIcon"/>
+</a>
+```
