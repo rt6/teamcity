@@ -77,7 +77,75 @@ tail -f logs/teamcity-agent.log
 
 Now go to Teamcity web portal, and click agents.  Under the `unauthorized` tab, you will see the new build agent. Click `authorize` to start using the new build agent.
 
-## 3) Build / Testing Icon
+
+## 3) Configure Teamcity Server for your repo/project
+
+1) Create Project.  
+
+
+2) Add a VCS root to the project.  
+
+Enter the fetch url (looks like this git@github.com/user-id/repo-name)  
+
+Enter the default branch `refs/heads/develop`
+
+Enter the branch specification `+:refs/pull/(*/merge)` and `+:refs/heads/release`
+
+Select Authentiation Method `Uploaded Key` and upload the private key for the public Deploy Key that has been added to the Github repo.
+
+Click `Test Connection`
+
+Click Save
+
+
+3) Create `build configuration`
+
+Enter the name.  eg.  Test Develop Build
+
+Take note of the Build Configuration ID.  You will need this for other purposes such as displaying the build status icon
+
+Select `enable status widget` to display the buld status icon
+
+Click `Save`
+
+
+3.1) Add Build Step
+Runner type: Command Line
+
+Enter step name: eg. Run Docker Container and Run Test Suite
+
+Execute step: if all previous steps have finished successfully
+
+Run: custom script
+
+Custom script:  enter bash code to spin up docker container and execute test suite
+
+Click `Save`
+
+3.2) Add VCS Trigger
+VCS Trigger will ad a build to the queue when a VCS check-in is detected
+
+Click `Save`
+
+3.3) Add Build Features
+Automatic merge
+
+Watch builds in branches: `refs/heads/develop`
+
+Merge into branch: `refs/heads/staging`
+
+Merge Policy: `merge commit` or `fast-forward`
+
+Click `Save`
+
+
+
+
+
+
+
+
+## 4) Build / Testing Icon
 Add this sniplet of code to the Github repo README.md file to display a image representing the the pass (green) or fail (red) of building and/or testing.  You may wish to remove the anchor if you do not want a hyper link back to the build status webpage.
 
 ```html
