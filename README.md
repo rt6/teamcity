@@ -80,10 +80,10 @@ Now go to Teamcity web portal, and click agents.  Under the `unauthorized` tab, 
 
 ## 3) Configure Teamcity Server for your repo/project
 
-1) Create Project.  
+1) Create **Project**.  
 
 
-2) Add a VCS root to the project.  
+2) Add a **VCS root** to the project.  
 
 Enter the fetch url (looks like this git@github.com/user-id/repo-name)  
 
@@ -98,7 +98,7 @@ Click `Test Connection`
 Click `Save`
 
 
-3) Create `build configuration`
+3) Create **build configuration**
 
 Enter the name.  eg.  Test Develop Build
 
@@ -109,7 +109,7 @@ Select `enable status widget` to display the buld status icon
 Click `Save`
 
 
-3.1) Add Build Step
+3.1) Add **Build Step**
 Runner type: Command Line
 
 Enter step name: eg. Run Docker Container and Run Test Suite
@@ -122,12 +122,12 @@ Custom script:  enter bash code to spin up docker container and execute test sui
 
 Click `Save`
 
-3.2) Add VCS Trigger
+3.2) Add  **Triggers**
 VCS Trigger will ad a build to the queue when a VCS check-in is detected
 
 Click `Save`
 
-3.3) Add Build Features
+3.3) Add **Build Features**
 Automatic merge
 
 Watch builds in branches: `refs/heads/develop`
