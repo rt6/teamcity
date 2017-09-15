@@ -89,13 +89,13 @@ Enter the fetch url (looks like this git@github.com/user-id/repo-name)
 
 Enter the default branch `refs/heads/develop`
 
-Enter the branch specification `+:refs/pull/(*/merge)` and `+:refs/heads/release`
+Enter the branch specification `+:refs/pull/(*/merge)` and `+:refs/heads/staging`
 
 Select Authentiation Method `Uploaded Key` and upload the private key for the public Deploy Key that has been added to the Github repo.
 
 Click `Test Connection`
 
-Click Save
+Click `Save`
 
 
 3) Create `build configuration`
