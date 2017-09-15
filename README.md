@@ -142,7 +142,9 @@ Merge Policy: `merge commit` or `fast-forward`
 Click `Save`
 
 
-
+## Optional Nice-to-have:
+- You may wish to configure Github with **webhooks** so that Github will notify Teamcity when a pull request or commit has been made, and to immediately start the build/test.  This can mitigate the 60 seconds waiting time for teamcity to poll Github for updates.
+- You may wish to configure Github with **protected branches** to ensure that build checks are done on all Pull Requests before a merge can be performed. For example, all Feature branch pull requests must be tested before merge on Develop branch.
 
 
 
