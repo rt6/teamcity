@@ -110,6 +110,7 @@ Click `Save`
 
 
 3.1) Add **Build Step**
+
 Runner type: Command Line
 
 Enter step name: eg. Run Docker Container and Run Test Suite
@@ -123,11 +124,13 @@ Custom script:  enter bash code to spin up docker container and execute test sui
 Click `Save`
 
 3.2) Add  **Triggers**
+
 VCS Trigger will ad a build to the queue when a VCS check-in is detected
 
 Click `Save`
 
 3.3) Add **Build Features**
+
 Automatic merge
 
 Watch builds in branches: `refs/heads/develop`
